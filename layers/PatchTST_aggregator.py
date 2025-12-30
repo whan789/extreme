@@ -8,6 +8,7 @@ class PatchTSTAggregator(nn.Module):
         
         # 1. Learnable Global Token (Summary 역할을 할 빈 토큰)
         self.learnable_token = nn.Parameter(torch.randn(C, 1, D))
+        nn.init.normal_(self.learnable_token, std=0.02)
         
         # 2. PatchTST Encoding Layer (Transformer Encoder Layer)
         # 각 채널별로 패치 간의 관계를 학습하도록 설정 (Channel-Independence 가속)

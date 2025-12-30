@@ -24,7 +24,8 @@ class EVTAggregator(nn.Module):
         self.trough_evt_proj = nn.Linear(2, self.d_model)
         
         # 채널별 융합 가중치 (Normal, Peak, Trough)
-        self.alpha = nn.Parameter(torch.randn(self.enc_in, 3))
+        # self.alpha = nn.Parameter(torch.randn(self.enc_in, 3))
+        self.alpha = nn.Parameter(torch.zeros(self.enc_in, 3))
 
     def forward(self, patch_latent, raw_patches):
         B, C, Nk, D = patch_latent.shape
